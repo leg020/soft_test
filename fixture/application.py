@@ -7,6 +7,7 @@ class Application:
 
     def __init__(self, address):
         self.app = app().start(address)
+        #self.scaner = app().start(scaner_address)
 
     def click_element(self, window_name, button_name):
         time.sleep(1)

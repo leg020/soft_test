@@ -26,9 +26,11 @@ class FrontolWindow:
         self.app.click_element(window_name='Супервизор', button_name='Выход в ОС')
         self.app.click_button('~')
 
+    def open_registration_menu(self):
+        self.app.click_element(window_name='Супервизор', button_name='Регистрация...')
+
     def enter_position(self, place_position, count):
         i = 1
-        self.app.click_element(window_name='Супервизор', button_name='Регистрация...')
         self.app.click_button('{F6}')
         while i < place_position:
             self.app.click_button('{DOWN}')
@@ -56,7 +58,13 @@ class FrontolWindow:
         self.app.click_button('{ESC}')
         self.app.click_button('~')
 
-    def registration(self, place_position, count):
-        self.enter_position(place_position, count)
-        self.close_check(2)
+    def make_check(self, positions_list):
+        for row in positions_list['positions']:
+            self.enter_position(place_position=row['place_in_list'], count=row['cout'])
+        self.close_check(type_pay=positions_list['type_close'])
+
+    def registration(self, positions_list):
+        self.open_registration_menu()
+        for row in positions_list:
+            self.make_check(row)
         self.exit()
