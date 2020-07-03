@@ -2,9 +2,11 @@
 
 class PositionsInCheck:
 
-    def __init__(self, place_in_list=None, cout=None, type_close=None):
+    def __init__(self, place_in_list=None, cout=None, need_mark=False, mark=None):
         self.place_in_list = place_in_list
         self.cout = cout
+        self.need_mark = need_mark
+        self.mark = mark
 
 class Checks:
 

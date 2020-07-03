@@ -1,12 +1,17 @@
 from fixture.application import Application
 import time
+from fixture.scaner_window import ScanerWindow
 
 
 class FrontolWindow:
 
-    def __init__(self, target):
+    def __init__(self, target, scaner_port=None, scaner_boundrate=9600):
 
         self.app = Application(address=target)
+        if scaner_port != None:
+            self.scaner = ScanerWindow(port=scaner_port, baudrate=scaner_boundrate)
+        else:
+            self.scaner = None
 
 
     def open_main_window(self, have_cassa=True):
@@ -23,25 +28,37 @@ class FrontolWindow:
             return -1
 
     def close_main_window(self):
+        self.scaner.close_port()
         self.app.click_element(window_name='Супервизор', button_name='Выход в ОС')
         self.app.click_button('~')
 
     def open_registration_menu(self):
         self.app.click_element(window_name='Супервизор', button_name='Регистрация...')
 
-    def enter_position(self, place_position, count):
+    def add_mark(self, need_mark, mark):
+        if need_mark == True:
+            if mark != None:
+                self.scaner.add_mark(mark=mark)
+            else:
+                self.app.click_element(window_name='Ввод штрихкода маркировки', button_name='ШК отсутствует')
+                self.app.click_button('~')
+
+    def enter_position(self, place_position, count, need_mark, mark):
         i = 1
         self.app.click_button('{F6}')
         while i < place_position:
             self.app.click_button('{DOWN}')
             i = i + 1
         self.app.click_button('~')
-        i = 1
-        while i < count:
-            self.app.click_button('{UP}')
-            i = i + 1
-        self.app.click_button('~')
+        self.add_mark(need_mark=need_mark, mark=mark)
+        if mark == None:
+            i = 1
+            while i < count:
+                self.app.click_button('{UP}')
+                i = i + 1
+            self.app.click_button('~')
         self.app.click_button('{ESC}')
+
 
     def close_check(self, type_pay: int):
         i = 1
@@ -60,7 +77,7 @@ class FrontolWindow:
 
     def make_check(self, positions_list):
         for row in positions_list['positions']:
-            self.enter_position(place_position=row['place_in_list'], count=row['cout'])
+            self.enter_position(place_position=row['place_in_list'], count=row['cout'], need_mark=row['need_mark'], mark=row['mark'])
         self.close_check(type_pay=positions_list['type_close'])
 
     def registration(self, positions_list):
