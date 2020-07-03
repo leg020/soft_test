@@ -1,4 +1,4 @@
-from fixture.application import Application
+from fixture.transport import Transport
 import time
 from fixture.scaner import Scaner
 
@@ -7,7 +7,7 @@ class FrontolReg:
 
     def __init__(self, target, scaner_port=None, scaner_boundrate=9600):
 
-        self.app = Application(address=target)
+        self.app = Transport(address=target)
         if scaner_port != None:
             self.scaner = Scaner(port=scaner_port, baudrate=scaner_boundrate)
         else:
@@ -15,7 +15,6 @@ class FrontolReg:
 
 
     def open_main_window(self, have_cassa=True):
-
         if have_cassa == False:
 
             time.sleep(4)
@@ -74,14 +73,3 @@ class FrontolReg:
     def exit(self):
         self.app.click_button('{ESC}')
         self.app.click_button('~')
-
-    def make_check(self, positions_list):
-        for row in positions_list['positions']:
-            self.enter_position(place_position=row['place_in_list'], count=row['cout'], need_mark=row['need_mark'], mark=row['mark'])
-        self.close_check(type_pay=positions_list['type_close'])
-
-    def registration(self, positions_list):
-        self.open_registration_menu()
-        for row in positions_list:
-            self.make_check(row)
-        self.exit()

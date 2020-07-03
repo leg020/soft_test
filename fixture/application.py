@@ -1,37 +1,36 @@
-from pywinauto import Application as app
-from pywinauto import keyboard
-import time
-
+from fixture.frontol_reg import FrontolReg
+from model.settings import Settings
 
 class Application:
 
-    def __init__(self, address):
-        self.app = app().start(address)
+    def __init__(self, data):
+        self.settings = Settings(target=data['settings']['target'],
+                                 scaner_port=data['settings']['scaner_port'],
+                                 scaner_boundrate=data['settings']['scaner_boundrate'],
+                                 have_cassa=data['settings']['have_cassa'])
+        self.data = data['data']
+        self.app = None
 
-    def click_element(self, window_name, button_name):
-        time.sleep(1)
-        open_window = self.app.window(title=window_name)
-        open_window.wait('visible')
-        open_window.window(title=button_name).click()
-        time.sleep(1)
-
-    def click_element_by_auto_id(self, window_name, auto_id):
-        time.sleep(1)
-        open_window = self.app.window(title=window_name)
-        open_window.wait('visible')
-        open_window.window(auto_id=auto_id).click()
-        time.sleep(1)
-
-    def click_button(self, button_name):
-        time.sleep(1)
-        keyboard.send_keys(button_name)
-
-    def check_window(self, window_name):
+    def start_frontol(self):
         try:
-            open_window = self.app.window(title=window_name)
-            open_window.wait('visible')
-            return 0
+            self.app = FrontolReg(target=self.settings.target,
+                                  scaner_port=self.settings.scaner_port,
+                                  scaner_boundrate=self.settings.scaner_boundrate)
+            self.app.open_main_window(have_cassa=self.settings.have_cassa)
         except:
-            return -1
+            print('Ошибка при инициализации')
 
 
+    def make_check(self, positions_list):
+        for row in positions_list['positions']:
+            self.app.enter_position(place_position=row['place_in_list'], count=row['cout'], need_mark=row['need_mark'], mark=row['mark'])
+        self.app.close_check(type_pay=positions_list['type_close'])
+
+    def registration(self):
+        self.app.open_registration_menu()
+        for row in self.data:
+            self.make_check(row)
+        self.app.exit()
+
+    def exit_frontol(self):
+        self.app.close_main_window()

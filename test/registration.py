@@ -1,10 +1,16 @@
-from fixture.frontol_reg import FrontolReg
+from fixture.application import Application
 
 
-Ac = [{
-    'check_number': 1,
-    'positions': [
-        {
+data = {
+    'settings': {
+        'target': 'C:\\Program Files (x86)\\ATOL\\Frontol6\\BIN\\Frontol.exe',
+        'scaner_port': 'COM258',
+        'scaner_boundrate': 9600,
+        'have_cassa': True
+    },
+    'data': [{
+        'check_number': 1,
+        'positions': [{
             'place_in_list': 3,
             'cout': 1,
             'need_mark': True,
@@ -14,15 +20,12 @@ Ac = [{
             'place_in_list': 3,
             'cout': 3,
             'need_mark': True,
-            'mark': None
-        }
-    ],
-    'type_close': 1
-},
-{
-    'check_number': 2,
-    'positions': [
-        {
+            'mark': None}],
+        'type_close': 1
+    },
+    {
+        'check_number': 2,
+        'positions': [{
             'place_in_list': 1,
             'cout': 3,
             'need_mark': False,
@@ -33,16 +36,18 @@ Ac = [{
             'cout': 3,
             'need_mark': False,
             'mark': None
-        }
-    ],
-    'type_close': 1
-}]
+        }],
+        'type_close': 1
+    }]
+}
 
 
-app = FrontolReg(target='C:\\Program Files (x86)\\ATOL\\Frontol6\\BIN\\Frontol.exe', scaner_port='COM258')
+app = Application(data)
 
-app.open_main_window(have_cassa=True)
-app.registration(Ac)
-app.close_main_window()
+app.start_frontol()
+
+app.registration()
+
+app.exit_frontol()
 
 
