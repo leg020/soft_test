@@ -1,4 +1,4 @@
-from fixture.frontol_window import FrontolWindow
+from fixture.frontol_reg import FrontolReg
 
 
 Ac = [{
@@ -39,7 +39,7 @@ Ac = [{
 }]
 
 
-app = FrontolWindow(target='C:\\Program Files (x86)\\ATOL\\Frontol6\\BIN\\Frontol.exe', scaner_port='COM258')
+app = FrontolReg(target='C:\\Program Files (x86)\\ATOL\\Frontol6\\BIN\\Frontol.exe', scaner_port='COM258')
 
 app.open_main_window(have_cassa=True)
 app.registration(Ac)

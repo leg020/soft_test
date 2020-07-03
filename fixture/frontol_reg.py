@@ -1,15 +1,15 @@
 from fixture.application import Application
 import time
-from fixture.scaner_window import ScanerWindow
+from fixture.scaner import Scaner
 
 
-class FrontolWindow:
+class FrontolReg:
 
     def __init__(self, target, scaner_port=None, scaner_boundrate=9600):
 
         self.app = Application(address=target)
         if scaner_port != None:
-            self.scaner = ScanerWindow(port=scaner_port, baudrate=scaner_boundrate)
+            self.scaner = Scaner(port=scaner_port, baudrate=scaner_boundrate)
         else:
             self.scaner = None
 

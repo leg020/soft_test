@@ -1,6 +1,6 @@
 import serial
 
-class ScanerWindow:
+class Scaner:
 
     def __init__(self, port: str, baudrate: int):
         self.port = serial.Serial(port=port, baudrate=baudrate, timeout=0)
