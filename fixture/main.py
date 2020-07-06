@@ -16,7 +16,7 @@ class Main:
             self.app = Application(target=self.settings.target,
                                   scaner_port=self.settings.scaner_port,
                                   scaner_boundrate=self.settings.scaner_boundrate)
-            self.app.frontol_registration.open_main_window(have_cassa=self.settings.have_cassa)
+            self.app.open_main_window(have_cassa=self.settings.have_cassa)
         except:
             print('Ошибка при инициализации')
 
@@ -33,4 +33,4 @@ class Main:
         self.app.frontol_registration.exit()
 
     def exit_frontol(self):
-        self.app.frontol_registration.close_main_window()
+        self.app.close_main_window()
