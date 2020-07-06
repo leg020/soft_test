@@ -1,17 +1,11 @@
-from fixture.transport import Transport
 import time
-from fixture.scaner import Scaner
 
 
 class FrontolReg:
 
-    def __init__(self, target, scaner_port=None, scaner_boundrate=9600):
-
-        self.app = Transport(address=target)
-        if scaner_port != None:
-            self.scaner = Scaner(port=scaner_port, baudrate=scaner_boundrate)
-        else:
-            self.scaner = None
+    def __init__(self, transport, scaner):
+        self.app = transport
+        self.scaner = scaner
 
 
     def open_main_window(self, have_cassa=True):

@@ -1,4 +1,4 @@
-from fixture.application import Application
+from fixture.main import Main
 
 
 data = {
@@ -42,12 +42,12 @@ data = {
 }
 
 
-app = Application(data)
+main = Main(data)
 
-app.start_frontol()
+main.start_frontol()
 
-app.registration()
+main.registration()
 
-app.exit_frontol()
+main.exit_frontol()
 
 
