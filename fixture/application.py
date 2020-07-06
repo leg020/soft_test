@@ -1,6 +1,7 @@
 from fixture.registration_helper import RegistrationHelper
 from fixture.transport import Transport
 from fixture.scaner import Scaner
+from fixture.report_helper import ReportHelper
 import time
 
 class Application:
@@ -12,6 +13,7 @@ class Application:
             self.scaner = Scaner(port=scaner_port, baudrate=scaner_boundrate)
 
         self.frontol_registration = RegistrationHelper(transport=self.transport, scaner=self.scaner)
+        self.frontol_report = ReportHelper(transport=self.transport)
 
     def open_main_window(self, have_cassa=True):
         if have_cassa == False:

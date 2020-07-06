@@ -34,3 +34,11 @@ class Main:
 
     def exit_frontol(self):
         self.app.close_main_window()
+
+    def report(self, id=None):
+        self.app.frontol_report.open_report_menu()
+        if id != None:
+            self.app.frontol_report.print_report_by_id(report_id=id)
+        else:
+            print("Не задан ни один из типов отчета")
+        self.app.frontol_report.exit_report_menu()
