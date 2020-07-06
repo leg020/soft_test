@@ -1,6 +1,6 @@
 from fixture.registration_helper import RegistrationHelper
-from fixture.transport import Transport
-from fixture.scaner import Scaner
+from driver.transport import Transport
+from driver.scaner import Scaner
 from fixture.report_helper import ReportHelper
 import time
 
