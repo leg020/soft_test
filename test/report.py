@@ -20,7 +20,9 @@ data = {
             'place_in_list': 3,
             'cout': 3,
             'need_mark': True,
-            'mark': None}],
+            'mark': None
+        }],
+        'sale': False,
         'type_close': 1
     },
     {
@@ -37,6 +39,7 @@ data = {
             'need_mark': False,
             'mark': None
         }],
+        'sale': False,
         'type_close': 1
     }]
 }
