@@ -21,6 +21,7 @@ data = {
             'cout': 3,
             'need_mark': True,
             'mark': None}],
+        'sale': False,
         'type_close': 1
     },
     {
@@ -37,6 +38,7 @@ data = {
             'need_mark': False,
             'mark': None
         }],
+        'sale':True,
         'type_close': 1
     }]
 }

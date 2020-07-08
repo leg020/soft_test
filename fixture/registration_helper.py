@@ -49,3 +49,7 @@ class RegistrationHelper:
     def exit(self):
         self.app.click_button('{ESC}')
         self.app.click_button('~')
+
+    def add_sale(self, need):
+        if need == True:
+            self.app.click_button('^ 5')

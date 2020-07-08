@@ -24,6 +24,7 @@ class Main:
     def make_check(self, positions_list):
         for row in positions_list['positions']:
             self.app.frontol_registration.enter_position(place_position=row['place_in_list'], count=row['cout'], need_mark=row['need_mark'], mark=row['mark'])
+        self.app.frontol_registration.add_sale(need=positions_list['sale'])
         self.app.frontol_registration.close_check(type_pay=positions_list['type_close'])
 
     def registration(self):
