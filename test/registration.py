@@ -28,7 +28,7 @@ data = {
     },
     {
         'check_number': 2,
-        'check_type': 1,
+        'check_type': None,
         'help_setting': 1,
         'positions': [{
             'place_in_list': 1,
@@ -78,7 +78,7 @@ data1 = {
     'data': [
     {
         'check_number': 1,
-        'check_type': 1,
+        'check_type': 12,
         'help_setting': 1,
         'positions': [{
             'place_in_list': 1,
@@ -98,7 +98,7 @@ data1 = {
     },
     {
         'check_number': 2,
-        'check_type': 2,
+        'check_type': 13,
         'help_setting': 2,
         'positions': [{
             'place_in_list': 1,
@@ -120,7 +120,7 @@ data1 = {
 }
 
 
-main = Main(data1)
+main = Main(data)
 
 main.start_frontol()
 

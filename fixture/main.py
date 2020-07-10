@@ -38,18 +38,20 @@ class Main:
         data.check_number = check['check_number']
         data.type_close = check['type_close']
         data.positions = check['positions']
-        if data.check_type == 2:
+        if data.check_type != None:
             self.app.frontol_registration.new_document_type(check_type=data.check_type,
-                                                            set_setting=data.help_setting)
+                                                        set_setting=data.help_setting)
+        if data.check_type == 2:
             if data.help_setting == 2:
                 self.app.frontol_registration.close_check_come_back()
             else:
                 self.add_positions_in_check_and_close(data)
+        elif data.check_type == 3 or data.check_type == 4:
+            self.app.frontol_registration.add_sum_vnesenie(3)
         else:
-            if data.check_type != None:
-                self.app.frontol_registration.new_document_type(check_type=data.check_type,
-                                                                set_setting=data.help_setting)
             self.add_positions_in_check_and_close(data)
+        if data.check_type != None:
+            self.app.frontol_registration.come_back_type_check(data.check_type)
 
     def registration(self):
         self.app.frontol_registration.open_registration_menu()

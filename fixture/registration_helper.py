@@ -59,10 +59,24 @@ class RegistrationHelper:
         if need == True:
             self.app.click_button('^ 5')
 
+    def add_sum_vnesenie(self, count):
+        i = 1
+        self.app.click_button('{F6}')
+        while i < count:
+            self.app.click_button('{DOWN}')
+            i = i + 1
+        self.app.click_button('~')
+        self.app.click_button('~')
+        self.app.click_button('{ESC}')
+        self.app.click_button('^ {F2}')
 
-
-
-
+    def come_back_type_check(self, count):
+        i = 1
+        self.submit_operation_by_document(id_operation=1)
+        while i < count:
+            self.app.click_button('{UP}')
+            i = i + 1
+        self.app.click_button('{ESC}')
 
     def submit_operation_by_document(self, id_operation):
         i = 1
