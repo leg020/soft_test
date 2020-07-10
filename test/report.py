@@ -10,6 +10,8 @@ data = {
     },
     'data': [{
         'check_number': 1,
+        'check_type': 1,
+        'help_setting': None,
         'positions': [{
             'place_in_list': 3,
             'cout': 1,
@@ -27,6 +29,27 @@ data = {
     },
     {
         'check_number': 2,
+        'check_type': 1,
+        'help_setting': None,
+        'positions': [{
+            'place_in_list': 1,
+            'cout': 3,
+            'need_mark': False,
+            'mark': None
+        },
+        {
+            'place_in_list': 1,
+            'cout': 3,
+            'need_mark': False,
+            'mark': None
+        }],
+        'sale': False,
+        'type_close': 1
+    },
+    {
+        'check_number': 3,
+        'check_type': 2,
+        'help_setting': 2,
         'positions': [{
             'place_in_list': 1,
             'cout': 3,

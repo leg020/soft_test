@@ -1,5 +1,6 @@
 from fixture.application import Application
 from model.settings import Settings
+from model.positions_in_check import Checks
 
 class Main:
 
@@ -20,12 +21,35 @@ class Main:
         except:
             print('Ошибка при инициализации')
 
+    def add_positions_in_check_and_close(self, check: Checks()):
+        for row in check.positions:
+            self.app.frontol_registration.enter_position(place_position=row['place_in_list'],
+                                                         count=row['cout'],
+                                                         need_mark=row['need_mark'],
+                                                         mark=row['mark'])
+        self.app.frontol_registration.add_sale(need=check.sale)
+        self.app.frontol_registration.close_check(type_pay=check.type_close)
 
-    def make_check(self, positions_list):
-        for row in positions_list['positions']:
-            self.app.frontol_registration.enter_position(place_position=row['place_in_list'], count=row['cout'], need_mark=row['need_mark'], mark=row['mark'])
-        self.app.frontol_registration.add_sale(need=positions_list['sale'])
-        self.app.frontol_registration.close_check(type_pay=positions_list['type_close'])
+    def make_check(self, check):
+        data = Checks()
+        data.check_type = check['check_type']
+        data.help_setting = check['help_setting']
+        data.sale = check['sale']
+        data.check_number = check['check_number']
+        data.type_close = check['type_close']
+        data.positions = check['positions']
+        if data.check_type == 2:
+            self.app.frontol_registration.new_document_type(check_type=data.check_type,
+                                                            set_setting=data.help_setting)
+            if data.help_setting == 2:
+                self.app.frontol_registration.close_check_come_back()
+            else:
+                self.add_positions_in_check_and_close(data)
+        else:
+            if data.check_type != None:
+                self.app.frontol_registration.new_document_type(check_type=data.check_type,
+                                                                set_setting=data.help_setting)
+            self.add_positions_in_check_and_close(data)
 
     def registration(self):
         self.app.frontol_registration.open_registration_menu()

@@ -10,6 +10,8 @@ data = {
     },
     'data': [{
         'check_number': 1,
+        'check_type': 1,
+        'help_setting': None,
         'positions': [{
             'place_in_list': 3,
             'cout': 1,
@@ -26,6 +28,8 @@ data = {
     },
     {
         'check_number': 2,
+        'check_type': 1,
+        'help_setting': 1,
         'positions': [{
             'place_in_list': 1,
             'cout': 3,
@@ -38,13 +42,85 @@ data = {
             'need_mark': False,
             'mark': None
         }],
-        'sale':True,
+        'sale': False,
         'type_close': 1
-    }]
+    },
+    {
+        'check_number': 2,
+        'check_type': 2,
+        'help_setting': 1,
+        'positions': [{
+            'place_in_list': 1,
+            'cout': 3,
+            'need_mark': False,
+            'mark': None
+        },
+        {
+            'place_in_list': 1,
+            'cout': 3,
+            'need_mark': False,
+            'mark': None
+        }],
+        'sale': False,
+        'type_close': 1
+    }
+    ]
 }
 
 
-main = Main(data)
+data1 = {
+    'settings': {
+        'target': 'C:\\Program Files (x86)\\ATOL\\Frontol6\\BIN\\Frontol.exe',
+        'scaner_port': 'COM258',
+        'scaner_boundrate': 9600,
+        'have_cassa': True
+    },
+    'data': [
+    {
+        'check_number': 1,
+        'check_type': 1,
+        'help_setting': 1,
+        'positions': [{
+            'place_in_list': 1,
+            'cout': 3,
+            'need_mark': False,
+            'mark': None
+        },
+        {
+            'place_in_list': 1,
+            'cout': 3,
+            'need_mark': False,
+            'mark': None
+        },
+        ],
+        'sale': False,
+        'type_close': 1
+    },
+    {
+        'check_number': 2,
+        'check_type': 2,
+        'help_setting': 2,
+        'positions': [{
+            'place_in_list': 1,
+            'cout': 3,
+            'need_mark': False,
+            'mark': None
+        },
+        {
+            'place_in_list': 1,
+            'cout': 3,
+            'need_mark': False,
+            'mark': None
+        },
+        ],
+        'sale': False,
+        'type_close': 1
+    }
+    ]
+}
+
+
+main = Main(data1)
 
 main.start_frontol()
 

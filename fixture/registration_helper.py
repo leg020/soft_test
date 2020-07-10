@@ -34,6 +34,11 @@ class RegistrationHelper:
             self.app.click_button('~')
         self.app.click_button('{ESC}')
 
+    def close_check_come_back(self):
+        self.app.click_button('~')
+        self.app.click_button('~')
+        self.app.click_button('^ {F2}')
+
 
     def close_check(self, type_pay: int):
         i = 1
@@ -53,3 +58,41 @@ class RegistrationHelper:
     def add_sale(self, need):
         if need == True:
             self.app.click_button('^ 5')
+
+
+
+
+
+
+    def submit_operation_by_document(self, id_operation):
+        i = 1
+        self.app.click_button('+ {F7}')
+        while i < id_operation:
+            self.app.click_button('{DOWN}')
+            i = i + 1
+        self.app.click_button('~')
+
+    def new_document_type(self, check_type, set_setting):
+        i = 1
+        j = 1
+        self.submit_operation_by_document(id_operation=1)
+        while i < check_type:
+            self.app.click_button('{DOWN}')
+            i = i + 1
+        self.app.click_button('~')
+        if check_type == 2:  # Возврат продажи
+            while j < set_setting:
+                self.app.click_button('{DOWN}')
+                j = j + 1
+            self.app.click_button('~')
+            if set_setting == 2:
+                self.app.click_button('~')
+                self.app.click_button('~')
+
+
+    def new_operation(self, operation: int):
+        if operation == 10 or operation == 11 or operation == 13:
+            self.submit_operation_by_document(id_operation=operation)
+            self.app.click_button('~')
+        elif operation == 12:
+            self.submit_operation_by_document(id_operation=operation)

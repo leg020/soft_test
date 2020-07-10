@@ -10,8 +10,10 @@ class PositionsInCheck:
 
 class Checks:
 
-    def __init__(self, ckeck_number=None, positions=None, type_close=None, sale=False):
+    def __init__(self, ckeck_number=None, check_type=None, help_setting=None, positions=None, type_close=None, sale=False):
         self.ckeck_number = ckeck_number
+        self.check_type = check_type
+        self.help_setting = help_setting
         self.positions = positions
         self.type_close = type_close
         self.sale = sale
