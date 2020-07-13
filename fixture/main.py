@@ -53,19 +53,24 @@ class Main:
         if data.check_type != None:
             self.app.frontol_registration.come_back_type_check(data.check_type)
 
-    def registration(self):
-        self.app.frontol_registration.open_registration_menu()
+    def make_document(self):
+        #self.app.frontol_registration.open_registration_menu()
         for row in self.data:
-            self.make_check(row)
+            if row['document_type'] == 'registration':
+                self.registration(row)
+            if row['document_type'] == 'report':
+                self.report(row)
+
+    def registration(self, position):
+        self.app.frontol_registration.open_registration_menu()
+        self.make_check(position)
         self.app.frontol_registration.exit()
+
 
     def exit_frontol(self):
         self.app.close_main_window()
 
-    def report(self, id=None):
+    def report(self, position):
         self.app.frontol_report.open_report_menu()
-        if id != None:
-            self.app.frontol_report.print_report_by_id(report_id=id)
-        else:
-            print("Не задан ни один из типов отчета")
+        self.app.frontol_report.print_report_by_id(report_id=position['report_type'])
         self.app.frontol_report.exit_report_menu()

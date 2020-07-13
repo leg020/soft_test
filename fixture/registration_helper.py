@@ -51,9 +51,13 @@ class RegistrationHelper:
         self.app.click_button('^ {F2}')
         time.sleep(2)
 
-    def exit(self):
+    def exit(self, timeout=6):
         self.app.click_button('{ESC}')
         self.app.click_button('~')
+        i = 0
+        while i < timeout and self.app.check_window('Супервизор') != 0:
+            i = i + 1
+            time.sleep(1)
 
     def add_sale(self, need):
         if need == True:
