@@ -66,7 +66,6 @@ class Main:
         self.make_check(position)
         self.app.frontol_registration.exit()
 
-
     def exit_frontol(self):
         self.app.close_main_window()
 
