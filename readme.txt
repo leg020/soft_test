@@ -53,4 +53,72 @@ need_mark - необходимость введения марки, работа
     если mark имеет значение, значит это значение будет просканировано, как марка и добавиться в позицию
 
 
+Пример запроса:
+
+res = requests.post('http://localhost:8000/add_task', json={
+  "py/object": "model.data.Data",
+  "settings": {
+    "py/object": "model.settings.Settings",
+    "target": "C:\\Program Files (x86)\\ATOL\\Frontol6\\BIN\\Frontol.exe",
+    "scaner_port": "COM258",
+    "scaner_boundrate": 9600,
+    "have_cassa": True
+  },
+  "data": [
+    {
+      "py/object": "model.positions_in_check.Checks",
+      "check_number": 1,
+      "document_type": "registration",
+      "report_type": 1,
+      "check_type": None,
+      "help_setting": None,
+      "positions": [
+        {
+          "py/object": "model.positions_in_check.PositionsInCheck",
+          "place_in_list": 1,
+          "cout": 1,
+          "need_mark": False,
+          "mark": None
+        },
+        {
+          "py/object": "model.positions_in_check.PositionsInCheck",
+          "place_in_list": 1,
+          "cout": 1,
+          "need_mark": False,
+          "mark": None
+        }
+      ],
+      "type_close": 1,
+      "sale": False
+    },
+    {
+      "py/object": "model.positions_in_check.Checks",
+      "check_number": 1,
+      "document_type": "report",
+      "report_type": 7,
+      "check_type": None,
+      "help_setting": None,
+      "positions": [
+        {
+          "py/object": "model.positions_in_check.PositionsInCheck",
+          "place_in_list": 1,
+          "cout": 1,
+          "need_mark": False,
+          "mark": None
+        },
+        {
+          "py/object": "model.positions_in_check.PositionsInCheck",
+          "place_in_list": 1,
+          "cout": 1,
+          "need_mark": False,
+          "mark": None
+        },
+      ],
+      "type_close": 1,
+      "sale": False
+    }
+  ]
+})
+
+
 

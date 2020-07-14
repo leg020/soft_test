@@ -36,7 +36,9 @@ class Convertor:
                                            sale=row['sale'], positions=positions))
                 except:
                     self.err.append('There is exception in documents')
-                    return -1
+                    data = -1
+            else:
+                data = -1
         return data
 
 
