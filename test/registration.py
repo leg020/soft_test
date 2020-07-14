@@ -139,7 +139,6 @@ data1 = {
 f = Load()
 data = f.load_from_json(file='example.json')
 
-
 main = Maining(data)
 
 main.start_frontol()
