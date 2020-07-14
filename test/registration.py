@@ -1,5 +1,14 @@
-from fixture.main import Main
+# -*- coding: utf-8 -*-
+from fixture.main import *
+import os.path
+import jsonpickle
 
+
+class Load:
+
+    def load_from_json(self, file):
+        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), file), 'r') as f:
+            return jsonpickle.decode(f.read())
 
 data = {
     'settings': {
@@ -126,7 +135,12 @@ data1 = {
 }
 
 
-main = Main(data)
+
+f = Load()
+data = f.load_from_json(file='example.json')
+
+
+main = Maining(data)
 
 main.start_frontol()
 
