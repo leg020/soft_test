@@ -120,5 +120,13 @@ res = requests.post('http://localhost:8000/add_task', json={
   ]
 })
 
+Получить лог
+
+res = requests.get('http://localhost:8000/get_log')
+
+Получить информацию об ошибке
+
+res = requests.get('http://localhost:8000/get_err')
+
 
 

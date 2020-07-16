@@ -21,7 +21,6 @@ def start_testing(data):
 
 @server.route('/add_task', methods=['GET', 'POST'])
 def read_json_file():
-    #convertor = Convertor()
     file = request.get_json(silent=True)
     flag = convertor.convert_to_test_model(file)
     if flag == 0:
@@ -29,7 +28,6 @@ def read_json_file():
         thread.start()
         return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
     if flag == -1:
-        err = convertor.err
         return json.dumps({'success': False}), 200, {'ContentType': 'application/json'}
 
 @server.route('/get_err', methods=['GET', 'POST'])
