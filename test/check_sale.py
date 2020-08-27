@@ -4,7 +4,7 @@ from fixture.main import Main
 
 data = {
     'settings': {
-        'target': 'C:\\Users\\авы\\Desktop\\frontol\\releaseCandidat\\Frontol.exe',
+        'target': 'C:\\Program Files (x86)\\ATOL\\Frontol6\\BIN\\Frontol.exe',
         'scaner_port': 'COM258',
         'scaner_boundrate': 9600,
         'have_cassa': True

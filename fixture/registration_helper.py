@@ -39,7 +39,6 @@ class RegistrationHelper:
         self.app.click_button('~')
         self.app.click_button('^ {F2}')
 
-
     def close_check(self, type_pay: int):
         i = 1
         self.app.click_button('~')
@@ -106,7 +105,6 @@ class RegistrationHelper:
             if set_setting == 2:
                 self.app.click_button('~')
                 self.app.click_button('~')
-
 
     def new_operation(self, operation: int):
         if operation == 10 or operation == 11 or operation == 13:
