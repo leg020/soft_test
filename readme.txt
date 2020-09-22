@@ -130,3 +130,85 @@ res = requests.get('http://localhost:8000/get_err')
 
 
 
+
+Дополнительно:
+
+
+res = requests.post('http://localhost:8000/add_task', json= {
+    'settings': {
+        'target': 'C:\\Program Files (x86)\\ATOL\\Frontol6\\BIN\\Frontol.exe',
+        'scaner_port': 'COM258',
+        'scaner_boundrate': 9600,
+        'have_cassa': True
+    },
+    'data': [
+    {
+        'check_number': 1,
+        'document_type': 'registration',
+        'report_type': 1,
+        'check_type': 1,
+        'help_setting': 1,
+        'positions': [{
+            'place_in_list': 1,
+            'cout': 1,
+            'need_mark': False,
+            'mark': None
+        }
+        ],
+        'sale': False,
+        'type_close': 1
+    },
+        {
+            'check_number': 1,
+            'document_type': 'registration',
+            'report_type': 1,
+            'check_type': 1,
+            'help_setting': 1,
+            'positions': [{
+                'place_in_list': 1,
+                'cout': 1,
+                'need_mark': False,
+                'mark': None
+            }
+            ],
+            'sale': False,
+            'type_close': 1
+        },
+        {
+            'check_number': 1,
+            'document_type': 'registration',
+            'report_type': 1,
+            'check_type': 1,
+            'help_setting': 1,
+            'positions': [{
+                'place_in_list': 1,
+                'cout': 1,
+                'need_mark': False,
+                'mark': None
+            }
+            ],
+            'sale': False,
+            'type_close': 1
+        },
+        {
+            'check_number': 1,
+            'document_type': 'registration',
+            'report_type': 1,
+            'check_type': 1,
+            'help_setting': 1,
+            'positions': [{
+                'place_in_list': 1,
+                'cout': 1,
+                'need_mark': False,
+                'mark': None
+            }
+            ],
+            'sale': False,
+            'type_close': 1
+        }
+
+    ]
+}
+)
+
+
